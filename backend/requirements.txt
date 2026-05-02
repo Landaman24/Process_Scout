@@ -1,0 +1,42 @@
+# Core web framework
+fastapi>=0.110,<1.0
+uvicorn[standard]>=0.27,<1.0
+python-multipart>=0.0.9
+
+# Database
+sqlalchemy>=2.0,<3.0
+alembic>=1.13,<2.0
+psycopg[binary]>=3.1,<4.0
+pgvector>=0.2.5,<1.0
+
+# Validation / config
+pydantic>=2.5,<3.0
+pydantic-settings>=2.2,<3.0
+email-validator>=2,<3
+
+# Auth
+python-jose[cryptography]>=3.3,<4.0
+passlib[bcrypt]>=1.7,<2.0
+# Pin bcrypt below 4: passlib 1.7.x has a known compat bug with bcrypt 4.x
+bcrypt>=3.2,<4
+
+# HTTP client (OpenRouter)
+httpx>=0.27,<1.0
+
+# Background workers
+celery>=5.3,<6.0
+redis>=5.0,<6.0
+
+# Document processing
+pypdf>=4.0,<5.0
+
+# Embeddings (local, no API cost in the hot path).
+# torch is installed separately in the Dockerfile from the CPU-only index to keep image size sane.
+sentence-transformers>=2.7,<4
+numpy>=1.26,<3
+
+# Container-health view (SuperAdmin dashboard)
+docker>=7,<8
+
+# Tracing (optional — only used if LANGFUSE_* env vars set)
+langfuse>=2.20,<3.0

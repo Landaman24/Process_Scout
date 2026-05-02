@@ -1,0 +1,67 @@
+# --- Internal / Claude files (never push to public repo) ---
+CLAUDE.md
+.claude/
+notes/
+docs/
+
+# --- Environment & secrets ---
+.env
+.env.*
+!.env.example
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+*.egg
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.venv/
+venv/
+env/
+ENV/
+
+# --- Node / Frontend ---
+node_modules/
+frontend/dist/
+frontend/build/
+.npm/
+.pnpm-store/
+.yarn/
+*.tsbuildinfo
+
+# --- Database / Uploads (runtime, not seed) ---
+backend/uploads/
+!backend/uploads/.gitkeep
+*.sqlite
+*.sqlite3
+
+# --- Runtime-mutable app state (defaults live in code; lazily created on first save) ---
+backend/app/data/branding.json
+
+# --- Docker / runtime ---
+docker-compose.override.yml
+*.pid
+*.log
+logs/
+
+# --- Editors / OS ---
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# --- Local seed builds (only committed seed/manuals + seed/processed.sql) ---
+seed/_workdir/
+seed/*.tmp

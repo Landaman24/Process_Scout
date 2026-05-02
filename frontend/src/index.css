@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Root font-size at 14px shrinks body content to ~75% of the prior 19px
+     baseline. Tailwind text-* classes are rem-rooted so they all scale.
+     The sidebar bumps its own text-* classes one or two steps to compensate
+     and stay at the previous visual size — see AppShell.tsx. */
+  html {
+    font-size: 14px;
+  }
+
+  /* Zinc-only palette to match the LeadSolution aesthetic — dark sidebar, light
+     content, white cards, zinc-900 primary actions. Light mode only. */
+  :root {
+    --background: 0 0% 98%;          /* zinc-50 */
+    --foreground: 240 6% 10%;        /* zinc-900 */
+
+    --card: 0 0% 100%;               /* white */
+    --card-foreground: 240 6% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 6% 10%;
+
+    --primary: 240 6% 10%;           /* zinc-900 — primary button bg */
+    --primary-foreground: 0 0% 100%; /* white */
+
+    --secondary: 240 5% 96%;         /* zinc-100 */
+    --secondary-foreground: 240 6% 10%;
+
+    --muted: 240 5% 96%;             /* zinc-100 */
+    --muted-foreground: 240 4% 46%;  /* zinc-500 */
+
+    --accent: 240 5% 96%;            /* zinc-100 — hover states */
+    --accent-foreground: 240 6% 10%; /* zinc-900 */
+
+    --destructive: 0 72% 51%;        /* red-600 */
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 240 6% 90%;            /* zinc-200 */
+    --input: 240 6% 90%;             /* zinc-200 */
+    --ring: 240 6% 10%;              /* zinc-900 */
+
+    --sidebar: 240 6% 10%;           /* zinc-900 */
+    --sidebar-foreground: 240 5% 84%;/* zinc-300 */
+    --sidebar-accent: 240 4% 16%;    /* zinc-800 — sidebar hover/active bg */
+
+    --radius: 0.5rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+}
