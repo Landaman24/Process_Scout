@@ -44,10 +44,15 @@ def _parse_started_at(iso: str) -> int:
 
 
 def _container_data(c) -> dict[str, Any]:
+    # Read image from cached attrs instead of c.image — the latter triggers a fresh
+    # API lookup that 404s (ImageNotFound) when the underlying image has been pruned
+    # while the container kept running. Config.Image is the reference the container
+    # was started with (tag or SHA), which is what we want to display anyway.
+    image_ref = (c.attrs.get("Config") or {}).get("Image") or (c.attrs.get("Image") or "")[:19] or None
     base: dict[str, Any] = {
         "id": c.short_id,
         "name": c.name,
-        "image": (c.image.tags[0] if c.image and c.image.tags else (c.image.short_id if c.image else None)),
+        "image": image_ref,
         "status": c.status,
         "health": (c.attrs.get("State") or {}).get("Health", {}).get("Status"),
         "uptime_seconds": _parse_started_at((c.attrs.get("State") or {}).get("StartedAt", "")),
